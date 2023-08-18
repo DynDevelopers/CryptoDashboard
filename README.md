@@ -147,9 +147,9 @@ ResNet-50, short for "Residual Network 50," introduces residual blocks. These bl
 * Two Dense layers with ReLU activations are added to introduce non-linearity. These layers can help the model learn complex patterns from the flattened features.
 * The final Dense layer with a sigmoid activation produces a single output, which is common for binary classification tasks.
 
+
+
 ## Results
-
-
 
 <table border="1">
   <tr>
