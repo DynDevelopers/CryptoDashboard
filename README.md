@@ -44,7 +44,7 @@ GPU Integrated notebooks.
 ## How to run
 
 **Setup Dataset**
-* Download [Chihuahua vs Muffin]((https://www.kaggle.com/datasets/samuelcortinhas/muffin-vs-chihuahua-image-classification)) Dataset.
+* Download [Chihuahua vs Muffin](https://www.kaggle.com/datasets/samuelcortinhas/muffin-vs-chihuahua-image-classification) Dataset.
 * The dataset consists of 2 folders train and test.
 * Both train and test folder contains 2 folder named as chihuahua and muffin.
 * The name of these 2 folders are considered as label for the dataset.
