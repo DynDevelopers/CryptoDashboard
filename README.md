@@ -77,6 +77,9 @@ The dataset consists of 5917 images, serving as the basis for our in-depth inves
 
 * **Rescale:** The pixel values of the images are rescaled to a range of [0, 1] by dividing them by 255. This standardizes the pixel values.
 
+### Early Stopping
+* In order to mitigate the tendency of models to overfit, the strategy of early stopping has been employed. Early stopping entails the vigilant tracking of the model's performance on a distinct validation dataset throughout the training phase. The training process is curtailed as soon as indications of deteriorating performance on the validation dataset become evident.
+
 ### CNN Architecture
 #### Simple CNN
 ![Shallow Network drawio](https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/370c305b-8d00-44ea-852c-70bd5ae42e0e)
