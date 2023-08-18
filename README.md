@@ -1,9 +1,6 @@
 # Discriminating between Chihuahuas and Muffins: A Deep Learning Approach
 
-### Abstract
-Image recognition and classification have posed significant technological challenges. However, the advent of deep learning architectures like Convolutional Neural Networks (CNNs) has showcased their ability to achieve remarkable accuracy in such endeavors. This project aims to exhibit how transfer learning methods, employing feature extraction and data augmentation, effectively address these intricate problems. This becomes particularly crucial in scenarios where complexity surges, especially when discerning between highly similar images that pertain to entirely distinct contexts.
-
-### Introduction
+## Introduction
 
 Throughout the 2010s, the field of deep learning made remarkable strides, particularly in addressing anticipated tasks like object classification, speech recognition, text analysis, image synthesis, and more. Notably, AI competitions such as the "ImageNet challenge" played a pivotal role in catapulting convolutional architectures into the limelight. These architectures gained immense popularity for their effectiveness in resolving object recognition and classification dilemmas.
 
@@ -13,24 +10,78 @@ In the field of AI and computer vision, we address the challenge of distinguishi
 
 The Chihuahua vs. Muffin Challenge in the field of AI/ML introduces a captivating test of image classification algorithms. This unique challenge centers on differentiating between images of Chihuahua dogs and muffins, two subjects that can surprisingly share visual similarities.
 
+## Getting Started
 
-### Methods
+#### Prerequisites
+
+* Check if python environment exist.
+```console
+python3 --version
+```
+
+* Install tensorflow
+```console
+python3 -m pip install tensorflow
+```
+
+* Verify tensorflow installation
+```console
+python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+```
+
+* Install Keras
+```console
+numpy matplotlib keras
+```
+* Guide to install [python](https://www.python.org/downloads/) and [tensorflow](https://www.tensorflow.org/install/pip#macos).
+
+* Guide to install [anaconda](https://www.anaconda.com/).
+
+GPU Integrated notebooks.
+* [Kaggle](https://www.kaggle.com/) 
+* [GoogleColab](https://colab.google)
+
+## How to run
+
+**Setup Dataset**
+* Download [Chihuahua vs Muffin]((https://www.kaggle.com/datasets/samuelcortinhas/muffin-vs-chihuahua-image-classification)) Dataset.
+* The dataset consists of 2 folders train and test.
+* Both train and test folder contains 2 folder named as chihuahua and muffin.
+* The name of these 2 folders are considered as label for the dataset.
+
+**Code Run**
+* Run **project.ipynb** using [anaconda](https://www.anaconda.com/download), or any other GPU integrated notebooks (eg: [Kaggle](https://www.kaggle.com/), [GoogleColab](https://colab.google/)).
+* If using any GPU integrated notebooks first upload these dataset and then run the code.
 
 
-#### Data Augmetation
-'ImageDataGenerator' class from the Keras library to perform data augmentation. The 'ImageDataGenerator' class helps to generate batches of augmented images seamlessly during training. There are two generators, train_data and test_data, which will load batches of augmented and unmodified images, respectively, from the specified directories. The images are being resized to a target size of 150x150 pixels, and the class_mode is set to 'binary', indicating binary classification problem.
+## Dataset
 
-**Rotation Range:** Images are rotated by an angle of 40. This helps the model become invariant to rotation.
+The dataset consists of 5917 images, serving as the basis for our in-depth investigation into similar image recognition. 
 
-**Width and Height Shift Range:** The images are shifted horizontally and vertically by a proportions of 0.2. This simulates changes in perspective and object positioning.
+* **Training and Validation set(80%):** With 4733 images, the training set assumes a crucial role in cultivating the AI's comprehension. This particular subset captures subtle intricacies in patterns and textures, imparting a holistic grasp of Chihuahuas and muffins to the model.
+* **Test set(20%):** Comprising 1184 images, the testing set holds paramount importance in our evaluation process. Through assessing the model's performance on this distinct subset, we attain a dependable gauge of its practical capabilities in real-world scenarios.
 
-**Zoom Range:** Images are zoomed in and out by a factors of 0.2. This helps the model learn to recognize objects at different scales.
 
-**Horizontal Flip:** Images are flipped horizontally with a certain probability. This helps the model become invariant to horizontal flips.
+## Methodology
 
-**Rescale:** The pixel values of the images are rescaled to a range of [0, 1] by dividing them by 255. This standardizes the pixel values.
+### Data Augmetation
+* **ImageDataGenerator** class from the Keras library is used to perform data augmentation. The images are being resized to a target size of 150x150 pixels.
 
+* **Rotation Range:** Images are rotated by an angle of 40. This helps the model become invariant to rotation.
+
+* **Width and Height Shift Range:** The images are shifted horizontally and vertically by a proportions of 0.2. This simulates changes in perspective and object positioning.
+
+* **Zoom Range:** Images are zoomed in and out by a factors of 0.2. This helps the model learn to recognize objects at different scales.
+
+* **Horizontal Flip:** Images are flipped horizontally with a certain probability. This helps the model become invariant to horizontal flips.
+
+* **Rescale:** The pixel values of the images are rescaled to a range of [0, 1] by dividing them by 255. This standardizes the pixel values.
+
+### CNN Architecture
 #### Simple CNN
+![Shallow Network drawio](https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/370c305b-8d00-44ea-852c-70bd5ae42e0e)
+
+A shallow CNN model refers to a Convolutional Neural Network (CNN) architecture with a relatively small number of layers. Shallow CNN models are often used for simpler image recognition tasks or as baseline models for comparison with more complex architectures.
 
 #### VGG19
 ![VGG19Arc](https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/7f6817a0-8151-491e-8b34-2ef688914881)
@@ -84,5 +135,61 @@ Inception V3 utilizes a series of Inception modules, also known as GoogleNet mod
 
 #### ResNet50
 
+![Resnet50 drawio](https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/fab0e116-9f28-4b4f-aa89-3233f9ca4b3f)
+
+ResNet-50, short for "Residual Network 50," introduces residual blocks. These blocks allow the network to learn residual functions, which are the differences between the desired output and the current approximation produced by the network. This is achieved through the use of shortcut connections, also known as skip connections or identity mappings.
+
+* Loading pre-trained **Resnet50** model with ImageNet weights.
+* Removing the topmost fully connected classifier layers of the model and customizing the classifier to precisely suit the needs of a binary classification task.
+* The required input_shape is set to 1150x150 pixels with 3 RGB to the input image dimensions.
+* 35 layers are freezed, meaning they won't be updated during training, helping to retain the pre-trained knowledge from ImageNet.
+* The Flatten layer is used to flatten the output tensor from the base model.
+* Two Dense layers with ReLU activations are added to introduce non-linearity. These layers can help the model learn complex patterns from the flattened features.
+* The final Dense layer with a sigmoid activation produces a single output, which is common for binary classification tasks.
+
+## Results
 
 
+
+<table border="1">
+  <tr>
+    <td><p>Shallow CNN Model</p></td>
+    <td>VGG19</td>
+  </tr>
+  <tr>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/f9206b83-8bad-4343-ae64-49b97712aa69' width='400' height='300'/>     </td>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/9c827245-330c-4fb7-8a87-bc7380d59ac1' width='400' height='300'/> </td>
+  </tr>
+</table>
+
+<table border="1">
+  <tr>
+    <td><p>DenseNet121</p></td>
+    <td>InceptionV3</td>
+  </tr>
+  <tr>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/48e68470-7f04-4f45-bd57-a1c8fa93ae53' width='400' height='300'/>     </td>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/93bccbeb-16a8-4d25-ab92-fe3690beec90' width='400' height='300'/>     </td>
+  </tr>
+</table>
+
+<table border="1">
+  <tr>
+    <td><p>Resnet50</p></td>
+  </tr>
+  <tr>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/6b28be74-c48e-496c-be0d-4aadc18130db' width='400' height='300'/>     </td>
+  </tr>
+</table>
+
+
+## Future Scope
+
+The examination covered a subset comprising 4733 images. It's crucial to recognize that the accuracy percentages attained within this particular context should not be universally generalized. The conclusions drawn from such analyses are substantially impacted by factors like dataset instance size, composition, computational resources, and other variables. Pretraining models on an extensive dataset and subsequently fine-tune it using the target dataset for the purpose of image recognition. Using a learning rate scheduler that will dynamically adjusts the learning rate during the training process, thus augmenting the optimization procedure.
+
+## References
+* [Kaggle Dataset](https://www.kaggle.com/datasets/samuelcortinhas/muffin-vs-chihuahua-image-classification)
+* Andrej Karpathy et al. “Convolutional neural networks for visual recognition”. In: Notes accompany the Stanford CS class CS231 (2017).
+* Ramaprasad Poojary, Roma Raina, and Amit Kumar Mondal. “Effect of data-augmentation on fine-tuned CNN model performance”. In: IAES International
+* Journal of Artificial Intelligence 10.1 (2021), p. 84.
+[3] Enkhtogtokh Togootogtokh and Amarzaya Amartuvshin. “Deep learning approach for very similar objects recognition application on chihuahua and muffin problem”. In: arXiv preprint arXiv:1801.09573 (2018).
