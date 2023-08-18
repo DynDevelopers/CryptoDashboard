@@ -157,19 +157,20 @@ ResNet-50, short for "Residual Network 50," introduces residual blocks. These bl
     <td>VGG19</td>
   </tr>
   <tr>
-    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/f9206b83-8bad-4343-ae64-49b97712aa69' width='400' height='300'/>     </td>
-    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/9c827245-330c-4fb7-8a87-bc7380d59ac1' width='400' height='300'/> </td>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/3e9fc730-25fa-4bba-a91e-b61a3dbff217' width='350' height='250'/>     </td>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/657073c4-3c76-4473-9b3e-510654a38428' width='350' height='250'/> </td>
   </tr>
 </table>
 
 <table border="1">
+
   <tr>
     <td><p>DenseNet121</p></td>
     <td>InceptionV3</td>
   </tr>
   <tr>
-    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/48e68470-7f04-4f45-bd57-a1c8fa93ae53' width='400' height='300'/>     </td>
-    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/93bccbeb-16a8-4d25-ab92-fe3690beec90' width='400' height='300'/>     </td>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/fbfd6df5-1ad7-4a8b-ac0d-f5fe7027ecbe' width='350' height='250'/>     </td>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/6cb536c4-c3e2-40cd-a928-40695ddcac4d' width='350' height='250'/>     </td>
   </tr>
 </table>
 
@@ -178,9 +179,10 @@ ResNet-50, short for "Residual Network 50," introduces residual blocks. These bl
     <td><p>Resnet50</p></td>
   </tr>
   <tr>
-    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/6b28be74-c48e-496c-be0d-4aadc18130db' width='400' height='300'/>     </td>
+    <td><img src='https://github.com/DynDevelopers/CryptoDashboard/assets/42007119/0dd319c8-ce6f-4b57-a40f-a22c81dbacc6' width='350' height='250'/>     </td>
   </tr>
 </table>
+
 
 
 ## Future Scope
